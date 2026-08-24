@@ -108,9 +108,12 @@ no download is needed.
 
 ## Licence
 
-[TODO — choose. MIT or BSD-3 is conventional for MATLAB research code and is
-compatible with EIDORS, which is GPL-2/3. Note that the code does not
-incorporate EIDORS source, it calls it, so a permissive licence is available.]
+MIT — see `LICENSE`.
+
+The code calls EIDORS rather than incorporating its source, so a permissive
+licence applies here even though EIDORS itself is GPL. Anyone running these
+scripts is separately bound by the EIDORS and Netgen licences, and by whatever
+terms attach to the third-party EMD implementation they obtain.
 
 ## Citation
 
