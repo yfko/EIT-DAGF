@@ -21,8 +21,17 @@ img06 = build(0.6, RH, SIG_L, SIG_H, stim);
 % show_fem draws stray slivers outside the axes that survive both clipping
 % and rasterisation, so the 3-D views are drawn directly from the mesh with
 % trisurf instead. All geometry is taken from the model itself.
+% Panel (a) may be supplied as a ready-made render. draw3d() below produces
+% one from the mesh, but the authors' own export is clearer at print size, so
+% it is used when present.
 p3d = fullfile(tmp,'a.png');
-draw3d(img06, p3d);
+ext = 'fig1a_phantom.png';
+if exist(ext,'file')
+    p3d = ext;
+    fprintf('panel (a): using supplied render %s\n', ext);
+else
+    draw3d(img06, p3d);
+end
 
 %% --- composite -----------------------------------------------------------
 xax = -2:4/63:2;
@@ -71,7 +80,7 @@ ylim([0.3 2.2]); grid on; axis square; xlabel('x'); ylabel('\sigma');
 legend('r_{lung}=0.3','r_{lung}=0.6','Location','southeast'); legend boxoff
 title('(e) horizontal centre cut (row 31)','FontSize',10);
 
-exportgraphics(f,'fig_phantom.png','Resolution',150);
+exportgraphics(f,'fig_phantom.png','Resolution',200);
 fprintf('wrote fig_phantom.png\n');
 rmdir(tmp,'s');
 
