@@ -79,6 +79,7 @@ since it fixes the count at `fix(log2(N)) - 1`.
 | `eit_lung_table` | Section 3.4 and the mask diagnosis of Section 2.6 |
 | `eit_sigma_check` | Section 4.4 — heart conductivity 1.5 against 2.0 |
 | `eit_fig11_15_repro` | Figures 6 and 7 — human data |
+| `eit_revision_r1` | The independent selection criterion (Table 3), the window-cap triple (Table 6), the fixed linear high-pass controls (Table 7), the mesh-density ranges in Tables 4 and 5, and the conductivity comparison of Section 4.4 |
 
 All phantom scripts use σ_heart = 2.0, the value stated in the prior study's
 Methods. `eit_sigma_check` shows that the table published there corresponds to
