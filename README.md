@@ -88,10 +88,15 @@ Methods. `eit_sigma_check` shows that the table published there corresponds to
 ## The contract
 
 Each decomposition returns a `K × 208` matrix whose rows sum exactly to the
-measured vector. Separation is then a weight vector: zero on the lung-dominant
+measured vector. Separation is then a weight vector: zero on the *separating*
 row for heart imaging, above one for lung imaging. Because the three methods
 share this interface, the comparison isolates the decomposition and nothing
 else.
+
+The separating row is the one whose removal minimises GREIT shape deformation.
+It is called separating rather than lung-dominant — the term the 2022 study
+used — because Section 3.1 of the paper shows that the removed component is not
+the lung component for any of the three methods.
 
 `dagaf2.m` is a corrected re-implementation of the published DAGAF algorithm.
 Three differences from the reference release are deliberate and are documented
