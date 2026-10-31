@@ -1,0 +1,490 @@
+{
+ "21": {
+  "openalex_id": "W3198757505",
+  "doi": "10.1016/j.bspc.2021.103104",
+  "title": "A novel approach for decomposition of biomedical signals in different applications based on data-adaptive Gaussian average filtering",
+  "cited_by_count_2026-10-31": 31,
+  "citing_works": [
+   {
+    "openalex_id": "https://openalex.org/W4312097451",
+    "doi": "https://doi.org/10.23919/apsipaasc55919.2022.9980121",
+    "title": "Design of Optimal FIR Digital Filter by Swarm Optimization Technique",
+    "year": 2022,
+    "date": "2022-11-07",
+    "type": "conference-paper",
+    "venue": "Asia-Pacific Signal and Information Processing Association Annual Summit and Conference (APSIPA ASC)",
+    "first_author": "Jin Wu et al"
+   },
+   {
+    "openalex_id": "https://openalex.org/W4317802340",
+    "doi": "https://doi.org/10.1088/1748-0221/18/01/p01023",
+    "title": "A method for portable PPG signal dynamic acquisition and denoise based on CEEMDAN and wavelet transform",
+    "year": 2023,
+    "date": "2023-01-01",
+    "type": "article",
+    "venue": "Journal of Instrumentation",
+    "first_author": "Ziwei Tian et al"
+   },
+   {
+    "openalex_id": "https://openalex.org/W4381515441",
+    "doi": "https://doi.org/10.3788/cjl221273",
+    "title": "基于多区域主频增强方法获取颈部的弱脉搏信号",
+    "year": 2023,
+    "date": "2023-01-01",
+    "type": "article",
+    "venue": "Chinese Journal of Lasers",
+    "first_author": "陶嘉庆 Tao Jiaqing et al"
+   },
+   {
+    "openalex_id": "https://openalex.org/W4381747273",
+    "doi": "https://doi.org/10.1007/978-981-99-1472-2_5",
+    "title": "A Two-Level Fuzzy Model for Filtering Signals of the Automatic Dependent Surveillance-Broadcast",
+    "year": 2023,
+    "date": "2023-01-01",
+    "type": "conference-paper",
+    "venue": "Advances in intelligent systems and computing",
+    "first_author": "Maksim Vladimirovich Bobyr et al"
+   },
+   {
+    "openalex_id": "https://openalex.org/W4362700955",
+    "doi": "https://doi.org/10.3390/s23083785",
+    "title": "A Frequency Estimation Scheme Based on Gaussian Average Filtering Decomposition and Hilbert Transform: With Estimation of Respiratory Rate as an Example",
+    "year": 2023,
+    "date": "2023-04-07",
+    "type": "article",
+    "venue": "Sensors",
+    "first_author": "Yue‐Der Lin et al"
+   },
+   {
+    "openalex_id": "https://openalex.org/W4381569445",
+    "doi": "https://doi.org/10.1007/s10921-023-00955-9",
+    "title": "Eigen Background Subtraction for Industrial Flaw Detection: Application to High-Pressure Turbine Blade CT Scans",
+    "year": 2023,
+    "date": "2023-05-26",
+    "type": "article",
+    "venue": "Journal of Nondestructive Evaluation",
+    "first_author": "Clément Remacha et al"
+   },
+   {
+    "openalex_id": "https://openalex.org/W4387415323",
+    "doi": "https://doi.org/10.1109/jsen.2023.3321093",
+    "title": "Detection of Otitis Media With Effusion Using In-Ear Microphones and Machine Learning",
+    "year": 2023,
+    "date": "2023-10-06",
+    "type": "article",
+    "venue": "IEEE Sensors Journal",
+    "first_author": "Kuan-Chung Ting et al"
+   },
+   {
+    "openalex_id": "https://openalex.org/W4390010951",
+    "doi": "https://doi.org/10.21869/2223-1560-2023-27-2-140-154",
+    "title": "Filtering of Complex Signals Based on a Two-Level Fuzzy-Logic Model",
+    "year": 2023,
+    "date": "2023-12-19",
+    "type": "article",
+    "venue": "Proceedings of Southwest State University",
+    "first_author": "A. E. Arkhipov"
+   },
+   {
+    "openalex_id": "https://openalex.org/W4396727536",
+    "doi": "https://doi.org/10.52783/jes.3150",
+    "title": "English Teaching Quality Evaluation Model for Higher Education Based on Educational Data Mining Technology",
+    "year": 2024,
+    "date": "2024-04-04",
+    "type": "article",
+    "venue": "Journal of Electrical Systems",
+    "first_author": "Xiaohua Su"
+   },
+   {
+    "openalex_id": "https://openalex.org/W4396727567",
+    "doi": "https://doi.org/10.52783/jes.3060",
+    "title": "Augmented Physics-Informed Neural Networks and Seahorse Optimization Algorithm for Music Scene Simulation and Emotion Regulation in Virtual Reality Technology",
+    "year": 2024,
+    "date": "2024-04-04",
+    "type": "article",
+    "venue": "Journal of Electrical Systems",
+    "first_author": "Xinye Wang"
+   },
+   {
+    "openalex_id": "https://openalex.org/W4396727568",
+    "doi": "https://doi.org/10.52783/jes.3142",
+    "title": "Construction and Optimization of Financial Transformation Decision Model Based on Data Mining",
+    "year": 2024,
+    "date": "2024-04-04",
+    "type": "article",
+    "venue": "Journal of Electrical Systems",
+    "first_author": "Ruifen Zhao"
+   },
+   {
+    "openalex_id": "https://openalex.org/W4396751116",
+    "doi": "https://doi.org/10.52783/jes.3167",
+    "title": "Optimization Research on Provincial Users' Participation in Regional Electricity Spot Market Bidding Based on Hierarchically Gated Recurrent Neural Network",
+    "year": 2024,
+    "date": "2024-04-04",
+    "type": "article",
+    "venue": "Journal of Electrical Systems",
+    "first_author": "Jinqing Luo"
+   },
+   {
+    "openalex_id": "https://openalex.org/W4396859687",
+    "doi": "https://doi.org/10.3390/rs16101713",
+    "title": "Envelope Extraction Algorithm for Magnetic Resonance Sounding Signals Based on Adaptive Gaussian Filters",
+    "year": 2024,
+    "date": "2024-05-11",
+    "type": "article",
+    "venue": "Remote Sensing",
+    "first_author": "Baofeng Tian et al"
+   },
+   {
+    "openalex_id": "https://openalex.org/W4399680207",
+    "doi": "https://doi.org/10.3390/photonics11060560",
+    "title": "Modulated Short-Time Fourier-Transform-Based Nonstationary Signal Decomposition for Dual-Comb Ranging Systems",
+    "year": 2024,
+    "date": "2024-06-14",
+    "type": "article",
+    "venue": "Photonics",
+    "first_author": "Ningning Han et al"
+   },
+   {
+    "openalex_id": "https://openalex.org/W4401438081",
+    "doi": "https://doi.org/10.1016/j.knosys.2024.112362",
+    "title": "Optimized brain tumor identification via graph sample and aggregate-attention network with Artificial Lizard Search Algorithm",
+    "year": 2024,
+    "date": "2024-08-08",
+    "type": "article",
+    "venue": "Knowledge-Based Systems",
+    "first_author": "C. Moorthy et al"
+   },
+   {
+    "openalex_id": "https://openalex.org/W4402307552",
+    "doi": "https://doi.org/10.1016/j.knosys.2024.112400",
+    "title": "Solar energy prediction in IoT system based optimized complex-valued spatio-temporal graph convolutional neural network",
+    "year": 2024,
+    "date": "2024-09-06",
+    "type": "article",
+    "venue": "Knowledge-Based Systems",
+    "first_author": "Atul B. Kathole et al"
+   },
+   {
+    "openalex_id": "https://openalex.org/W4403102840",
+    "doi": "https://doi.org/10.3390/info15100606",
+    "title": "Fall Detection Based on Data-Adaptive Gaussian Average Filtering Decomposition and Machine Learning",
+    "year": 2024,
+    "date": "2024-10-03",
+    "type": "article",
+    "venue": "Information",
+    "first_author": "Yue‐Der Lin et al"
+   },
+   {
+    "openalex_id": "https://openalex.org/W4403522689",
+    "doi": "https://doi.org/10.1016/j.bspc.2024.107046",
+    "title": "Optimized neural network for vulnerable plaque detection in OCT images with noise tolerance and adaptive coefficient zeroing",
+    "year": 2024,
+    "date": "2024-10-18",
+    "type": "article",
+    "venue": "Biomedical Signal Processing and Control",
+    "first_author": "S. Perumal Sankar et al"
+   },
+   {
+    "openalex_id": "https://openalex.org/W4403917946",
+    "doi": "https://doi.org/10.1109/jsen.2024.3486154",
+    "title": "A Cross-Modal Autoencoder for Contactless Electrocardiography Monitoring Using Frequency-Modulated Continuous Wave Radar",
+    "year": 2024,
+    "date": "2024-10-30",
+    "type": "article",
+    "venue": "IEEE Sensors Journal",
+    "first_author": "Kai-Chun Liu et al"
+   },
+   {
+    "openalex_id": "https://openalex.org/W4405395543",
+    "doi": "https://doi.org/10.1016/j.bspc.2024.107336",
+    "title": "Improving the quality of pulse rate variability derived from wearable devices using adaptive, spectrum and nonlinear filtering",
+    "year": 2024,
+    "date": "2024-12-14",
+    "type": "article",
+    "venue": "Biomedical Signal Processing and Control",
+    "first_author": "Monika A. Prucnal et al"
+   },
+   {
+    "openalex_id": "https://openalex.org/W4405780786",
+    "doi": "https://doi.org/10.1016/j.patcog.2024.111272",
+    "title": "Deep vision-based wildlife intrusion detection with colour distribution preserved generative adversarial networks",
+    "year": 2024,
+    "date": "2024-12-25",
+    "type": "article",
+    "venue": "Pattern Recognition",
+    "first_author": "Moorthy V et al"
+   },
+   {
+    "openalex_id": "https://openalex.org/W4410219771",
+    "doi": "https://doi.org/10.1016/j.bspc.2025.108030",
+    "title": "A computationally efficient algorithm for estimating respiratory rate from seismocardiogram",
+    "year": 2025,
+    "date": "2025-05-09",
+    "type": "article",
+    "venue": "Biomedical Signal Processing and Control",
+    "first_author": "Tien-Hsiung Ku et al"
+   },
+   {
+    "openalex_id": "https://openalex.org/W4414010203",
+    "doi": "https://doi.org/10.1109/icepe65965.2025.11139644",
+    "title": "An Advanced EEG based Human Emotion Detection with Giant Armadillo Optimization Algorithm",
+    "year": 2025,
+    "date": "2025-05-09",
+    "type": "conference-paper",
+    "venue": "International Conference on Energy, Power and Environment (ICEPE)",
+    "first_author": "G. Kalyana Chakravarthy et al"
+   },
+   {
+    "openalex_id": "https://openalex.org/W4413783418",
+    "doi": "https://doi.org/10.1088/2634-4386/ae006c",
+    "title": "Physical reservoir computing for biomedical applications",
+    "year": 2025,
+    "date": "2025-08-28",
+    "type": "article",
+    "venue": "Neuromorphic Computing and Engineering",
+    "first_author": "Yuqi Ding et al"
+   },
+   {
+    "openalex_id": "https://openalex.org/W7125601455",
+    "doi": "https://doi.org/10.1109/ic3it66137.2025.11340876",
+    "title": "Adaptive Lightweight Autoencoder with Noise Estimation Module for Noise Reduction in ECG Signals",
+    "year": 2025,
+    "date": "2025-10-24",
+    "type": "conference-paper",
+    "venue": "International Conference on Communication, Computer, and Information Technology (IC3IT)",
+    "first_author": "G. Deepika et al"
+   },
+   {
+    "openalex_id": "https://openalex.org/W4416409324",
+    "doi": "https://doi.org/10.1016/j.patrec.2025.11.002",
+    "title": "Additive decomposition of one-dimensional signals using Transformers",
+    "year": 2025,
+    "date": "2025-11-20",
+    "type": "article",
+    "venue": "Pattern Recognition Letters",
+    "first_author": "Samuele Salti et al"
+   },
+   {
+    "openalex_id": "https://openalex.org/W4416888267",
+    "doi": "https://doi.org/10.1016/j.bspc.2025.109304",
+    "title": "Efficient fall detection using Kalman filter-enhanced triaxial accelerometer signals and machine learning",
+    "year": 2025,
+    "date": "2025-12-01",
+    "type": "article",
+    "venue": "Biomedical Signal Processing and Control",
+    "first_author": "Kai-Chun Liu et al"
+   },
+   {
+    "openalex_id": "https://openalex.org/W7208714314",
+    "doi": "https://doi.org/10.1016/b978-0-443-49276-1.00015-3",
+    "title": "Signal processing for biomedical applications",
+    "year": 2026,
+    "date": "2026-01-01",
+    "type": "book-chapter",
+    "venue": "Elsevier eBooks",
+    "first_author": "Ildar Rakhmatulin et al"
+   },
+   {
+    "openalex_id": "https://openalex.org/W7171460972",
+    "doi": "https://doi.org/10.1134/s0005117925601204",
+    "title": "Droop Control-Based Optimization of Hybrid Renewable Energy Systems: Combining Node-Level Capsule Graph Neural Network with Artificial Protozoa Optimizer",
+    "year": 2026,
+    "date": "2026-02-01",
+    "type": "article",
+    "venue": "Automation and Remote Control",
+    "first_author": "D. Viji et al"
+   },
+   {
+    "openalex_id": "https://openalex.org/W7163888255",
+    "doi": "https://doi.org/10.1016/j.measurement.2026.122202",
+    "title": "Lightweight attention diffusion model for denoising and reconstruction of impedance cardiography signals",
+    "year": 2026,
+    "date": "2026-06-08",
+    "type": "article",
+    "venue": "Measurement",
+    "first_author": "Shuai MA et al"
+   },
+   {
+    "openalex_id": "https://openalex.org/W7213601399",
+    "doi": "https://doi.org/10.1007/s11255-026-05386-9",
+    "title": "An explainable hybrid SMPR-Net-XGBoost framework for automated lupus nephritis detection using medical image analysis",
+    "year": 2026,
+    "date": "2026-09-19",
+    "type": "article",
+    "venue": "International Urology and Nephrology",
+    "first_author": "Gogineni Indrasree et al"
+   }
+  ]
+ },
+ "19": {
+  "openalex_id": "W4280513786",
+  "doi": "10.2174/1573405618666220513130834",
+  "title": "Separation of Heart and Lung-related Signals in Electrical Impedance Tomography Using Empirical Mode Decomposition",
+  "cited_by_count_2026-10-31": 10,
+  "citing_works": [
+   {
+    "openalex_id": "https://openalex.org/W4306905415",
+    "doi": "https://doi.org/10.1088/1361-6579/ac9c44",
+    "title": "Deep feature-domain matching for cardiac-related component separation from a chest electrical impedance tomography image series: proof-of-concept study",
+    "year": 2022,
+    "date": "2022-10-20",
+    "type": "article",
+    "venue": "Physiological Measurement",
+    "first_author": "Ke Zhang et al"
+   },
+   {
+    "openalex_id": "https://openalex.org/W4396854340",
+    "doi": "https://doi.org/10.1007/s11547-024-01825-8",
+    "title": "The influence of manual segmentation strategies and different phases selection on machine learning-based computed tomography in renal tumors: a systematic review and meta-analysis",
+    "year": 2024,
+    "date": "2024-05-13",
+    "type": "review",
+    "venue": "La radiologia medica",
+    "first_author": "Honghao Song et al"
+   },
+   {
+    "openalex_id": "https://openalex.org/W4400027112",
+    "doi": "https://doi.org/10.1088/1361-6579/ad5c39",
+    "title": "Separation of ventilation and perfusion of electrical impedance tomography image streams using multi-dimensional ensemble empirical mode decomposition",
+    "year": 2024,
+    "date": "2024-06-26",
+    "type": "article",
+    "venue": "Physiological Measurement",
+    "first_author": "Alfred Hülkenberg et al"
+   },
+   {
+    "openalex_id": "https://openalex.org/W4404522105",
+    "doi": "https://doi.org/10.1186/s13054-024-05173-x",
+    "title": "Electrical impedance tomography monitoring in adult ICU patients: state-of-the-art, recommendations for standardized acquisition, processing, and clinical use, and future directions",
+    "year": 2024,
+    "date": "2024-11-19",
+    "type": "review",
+    "venue": "Critical Care",
+    "first_author": "Gaetano Scaramuzzo et al"
+   },
+   {
+    "openalex_id": "https://openalex.org/W4407592015",
+    "doi": "https://doi.org/10.1007/978-981-96-1395-3_58",
+    "title": "Variational Mode Decomposition is Applied to the Extraction of Pulmonary Perfusion Signals in Electrical Impedance Tomography",
+    "year": 2025,
+    "date": "2025-01-01",
+    "type": "conference-paper",
+    "venue": "Lecture notes in electrical engineering",
+    "first_author": "Guobin Gao et al"
+   },
+   {
+    "openalex_id": "https://openalex.org/W4417409236",
+    "doi": "https://doi.org/10.1088/1361-6501/ae2d86",
+    "title": "A review of cardiac functional monitoring based on electrical impedance tomography",
+    "year": 2025,
+    "date": "2025-12-16",
+    "type": "article",
+    "venue": "Measurement Science and Technology",
+    "first_author": "Marlin Ramadhan Baidillah et al"
+   },
+   {
+    "openalex_id": "https://openalex.org/W7129615315",
+    "doi": "https://doi.org/10.1007/978-981-95-6837-6_49",
+    "title": "Breath-Hold-Free EIT for Pulmonary Perfusion Extraction and Imaging Using Ensemble Empirical Mode Decomposition",
+    "year": 2026,
+    "date": "2026-01-01",
+    "type": "conference-paper",
+    "venue": "Lecture notes in electrical engineering",
+    "first_author": "Liping Wei et al"
+   },
+   {
+    "openalex_id": "https://openalex.org/W7120201410",
+    "doi": "https://doi.org/10.1088/1361-6579/ae365d",
+    "title": "Electrical impedance tomography for stroke volume monitoring: a narrative review on signal processing, experimental and clinical applications",
+    "year": 2026,
+    "date": "2026-01-09",
+    "type": "review",
+    "venue": "Physiological Measurement",
+    "first_author": "Yuqiao Peng et al"
+   },
+   {
+    "openalex_id": "https://openalex.org/W7154712298",
+    "doi": "https://doi.org/10.1007/s10921-026-01363-5",
+    "title": "Multi-Modal Source Separation for Electrical Impedance Tomography",
+    "year": 2026,
+    "date": "2026-04-17",
+    "type": "article",
+    "venue": "Journal of Nondestructive Evaluation",
+    "first_author": "Laura Homa et al"
+   },
+   {
+    "openalex_id": "https://openalex.org/W7211951384",
+    "doi": "https://doi.org/10.1088/2057-1976/aea425",
+    "title": "Cardiac and respiratory signal separation in electrical impedance tomography (EIT)",
+    "year": 2026,
+    "date": "2026-09-08",
+    "type": "article",
+    "venue": "Biomedical Physics & Engineering Express",
+    "first_author": "Maulina Nurul Nurul Hidayah et al"
+   }
+  ]
+ },
+ "pubmed_query2_2026-10-31": [
+  {
+   "pmid": "42710529",
+   "date": "2026 Sep 17",
+   "journal": "Biomedical physics & engineering express",
+   "title": "Cardiac and respiratory signal separation in electrical impedance tomography (EIT)."
+  },
+  {
+   "pmid": "40288963",
+   "date": "2025 Apr 25",
+   "journal": "Sheng wu yi xue gong cheng xue za zhi = Journal of biomedical engineering = Shengwu yixue gongchengxue zazhi",
+   "title": "[Study on the separation method of lung ventilation and lung perfusion signals in electrical impedance tomography based on rime algorithm optimized variational mode decomposition]."
+  },
+  {
+   "pmid": "38925138",
+   "date": "2024 Jul 26",
+   "journal": "Physiological measurement",
+   "title": "Separation of ventilation and perfusion of electrical impedance tomography image streams using multi-dimensional ensemble empirical mode decomposition."
+  },
+  {
+   "pmid": "38697210",
+   "date": "2024 May 21",
+   "journal": "Physiological measurement",
+   "title": "Improved filtering methods to suppress cardiovascular contamination in electrical impedance tomography recordings."
+  },
+  {
+   "pmid": "35570528",
+   "date": "2022",
+   "journal": "Current medical imaging",
+   "title": "Separation of Heart and Lung-related Signals in Electrical Impedance Tomography Using Empirical Mode Decomposition."
+  },
+  {
+   "pmid": "35174192",
+   "date": "2022",
+   "journal": "Frontiers in medicine",
+   "title": "Removing Clinical Motion Artifacts During Ventilation Monitoring With Electrical Impedance Tomography: Introduction of Methodology and Validation With Simulation and Patient Data."
+  },
+  {
+   "pmid": "34167091",
+   "date": "2021 Aug 27",
+   "journal": "Physiological measurement",
+   "title": "A model-based source separation algorithm for lung perfusion imaging using electrical impedance tomography."
+  },
+  {
+   "pmid": "33529234",
+   "date": "2021",
+   "journal": "PloS one",
+   "title": "Semi-Siamese U-Net for separation of lung and heart bioimpedance images: A simulation study of thorax EIT."
+  },
+  {
+   "pmid": "33021240",
+   "date": "2020 Oct 6",
+   "journal": "Physiological measurement",
+   "title": "Cardiac eigen imaging: a novel method to isolate cardiac activity in thoracic electrical impedance tomography."
+  },
+  {
+   "pmid": "9001603",
+   "date": "1996 Nov",
+   "journal": "Physiological measurement",
+   "title": "An interleaved drive electrical impedance tomography image reconstruction algorithm."
+  }
+ ]
+}

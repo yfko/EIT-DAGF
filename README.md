@@ -1,23 +1,48 @@
-# Measurement-domain decomposition for heart/lung separation in EIT
+# Measurement-domain component removal in thoracic EIT
 
 MATLAB code accompanying:
 
-> Lin Y-D, Ko Y-F. *A quantitative framework for comparing measurement-domain
-> decompositions in electrical impedance tomography: principal component
-> analysis, empirical mode decomposition and data-adaptive Gaussian average
-> filtering.* Current Medical Imaging (submitted).
+> Lin Y-D, Ko Y-F. *Measurement-domain component removal in thoracic electrical
+> impedance tomography reconstructs the removed component, not the heart: a
+> phantom study with a human recording.* Submitted to *Physiological
+> Measurement*, 2026.
 
-Three decompositions — PCA, EMD and DAGAF — are reduced to one contract and
-compared under identical conditions on a finite element phantom and on a public
-human recording. Everything reported in the paper is produced by the scripts
-here.
+Three decompositions of a single EIT frame — PCA, EMD and DAGAF — are reduced
+to one contract (components that sum exactly to the measured voltages, one of
+which is removed) and the output of a linear one-step reconstructor is split
+into the unprocessed difference image and the image of the removed component.
+The paper shows that the central object reported as a heart image is the
+second term. This repository holds the phantom, the three decompositions, the
+component-selection rule, the figures of merit and the human split; the split
+measurements on the phantom were pre-registered and run in a companion
+repository (below).
+
+An earlier version of this code accompanied a submission of the same study to
+*Current Medical Imaging* (August 2026, desk-rejected). Commits before
+October 2026 and the file names `eit_fig11_15_repro`, `eit_revision_r1`,
+`eit_revision_r4_lung` refer to that draft's numbering; the table below gives
+the mapping to the *Physiological Measurement* manuscript.
 
 ---
+
+## Two repositories
+
+| | Holds | Where |
+|---|---|---|
+| **This repository** (`EIT-DAGF`) | phantom, decompositions (`dagaf2.m`, `emd_rcada.m`, PCA inline), component selection, GREIT figures of merit with the negative-contrast adjustments, weight sweeps, the human reproduction figures, the human split, the signed Table 2 correlations, the assembly of Figures 2 and 9, and the literature-search record of Section 1.3 | here, MIT |
+| **Companion repository** `EIT_noise_geometry_pre-registered` | the pre-registration, deviations D1–D9 and their registered results; the phantom split scripts `p2_separating_component*.m`, the displaced heart, the back-projection and Gauss–Newton reconstructors, the thorax, cardiac-reference and total-variation checks, the window sweep, `p2_probeA_blockscaling.m`; a `vendor/` copy of this repository's decomposition code | https://github.com/yfko/EIT_noise_geometry_pre-registered, **tag v1.0, commit 1e068214** |
+
+Two scripts here read the companion repository's `results/*.mat` files
+(`eit_table2_sign.m`, `make_fig2_fig9.m`). Clone it next to this repository
+(`../EIT_noise_geometry_pre-registered`) or set the environment variable
+`EIT_NOISE_GEOMETRY` to its root; both scripts resolve the path through the
+local function `companion_root` and stop with a message if it is not found.
 
 ## What is and is not included
 
 Included: the phantom, the three decompositions, the component-selection rule,
-the evaluation, and the scripts that generate each figure and table.
+the evaluation, the human split, and the scripts that generate each figure and
+table of this repository's part of the paper (mapping below).
 
 Not included, and why:
 
@@ -25,16 +50,20 @@ Not included, and why:
   algorithm it calls is `eemd.m` by Zhaohua Wu, distributed from
   rcada.ncu.edu.tw. That site is offline and the package carries no licence we
   can redistribute under. See *Obtaining the EMD implementation* below.
-* **The prior study's scripts.** The 2022 study's code has authors who are not
-  authors of this paper.
+* **The 2022 study's scripts.** The code of Cheng, Su and Ko (*Curr Med
+  Imaging* 2022) has authors who are not authors of this paper. The phantom
+  geometry and the human settings are reproduced from its Methods in
+  `eit_show_phantom.m` and `eit_fig11_15_repro.m`.
 * **EIDORS and Netgen.** Installed separately; see *Requirements*.
+* **Results files of the companion repository.** Read from that repository,
+  not copied here.
 
 ## Requirements
 
 | | Version used | Notes |
 |---|---|---|
 | MATLAB | R2026a | No toolboxes required. `gausswin` is inlined in `dagaf2.m` so the Signal Processing Toolbox is not needed. |
-| EIDORS | v3.8 | v3.8 specifically: the prior study's scripts were written against it, and the return order of `eval_GREIT_fig_merit` (AR, PE, RES, SD, RNG) was verified there. |
+| EIDORS | v3.8 | v3.8 specifically: the human settings follow the 2022 study, which was written against it, and the return order of `eval_GREIT_fig_merit` (AR, PE, RES, SD, RNG) was verified there. `montreal_data_1995` ships with it. |
 | Netgen | 6.1 | Called by EIDORS as an external binary. On Apple Silicon the 6.1 build is x86_64 and needs Rosetta 2. |
 
 On Apple Silicon, EIDORS v3.8 ships no `mexmaca64` build of `eidors_var_id`, and
@@ -45,7 +74,7 @@ replacement is described in `docs/eidors_apple_silicon.md`.
 
 ```matlab
 setup_eit_env('/path/to/eidors')   % sets NETGENDIR, starts EIDORS, smoke-tests both
-eit_compare_table1                  % Tables 3 and 4, and Figure 2
+eit_compare_table1                  % Table 1, Supplementary Table S6 (reference mesh), Figure 3
 ```
 
 `setup_eit_env` verifies that Netgen can actually build a mesh and that the
@@ -67,40 +96,62 @@ since it fixes the count at `fix(log2(N)) - 1`.
 
 ## Reproducing the paper
 
-| Script | Produces |
-|---|---|
-| `eit_show_phantom` | Figure 1 — mesh, electrode plane, conductivity maps, centre cuts |
-| `eit_compare_table1` | Table 2 (component screening), Table 3 (heart), Table 4 (lung), Figure 2 |
-| `eit_dagaf_images` | Figure 3 — DAGAF decomposition of one frame |
-| `eit_dagaf_imf1_weight` | Figure 4 — the three weight states, and the sweep that fixes the boost at 1.06 |
-| `eit_partial_weight` | Figure 5 — weight sweep, both axes logarithmic |
-| `eit_dagaf_ringing` | Table 5 — window cap against the figures of merit |
-| `eit_axis_test` | Section 3.6, hypothesis 2 — the injection-axis test |
-| `eit_lung_table` | Section 3.4 and the mask diagnosis of Section 2.6 |
-| `eit_sigma_check` | Section 4.4 — heart conductivity 1.5 against 2.0 |
-| `eit_fig11_15_repro` | Figures 6 and 7 — human data |
-| `eit_revision_r1` | The independent selection criterion (Table 3), the window-cap triple (Table 6), the fixed linear high-pass controls (Table 7), the mesh-density ranges in Tables 4 and 5, and the conductivity comparison of Section 4.4 |
+Numbering is that of the *Physiological Measurement* manuscript. "Companion"
+means the script lives in `EIT_noise_geometry_pre-registered`.
 
-All phantom scripts use σ_heart = 2.0, the value stated in the prior study's
-Methods. `eit_sigma_check` shows that the table published there corresponds to
-1.5; see Section 4.4 of the paper.
+| Item | Script | Notes |
+|---|---|---|
+| Figure 1 (phantom) | `eit_show_phantom` | panel (a) from `prep_fig1a` → `figures/fig1a_phantom.png` |
+| Figure 2 (the split, ten rows) | `make_fig2_fig9` | assembles companion `results/p2_separating_component*.mat` and `human_separating_component.mat` from `eit_human_separating_component`; writes `fig2_split_composite.png` and a consistency log |
+| Figure 3 (contract output and centre cuts) | `eit_compare_table1` | `figures/fig_compare_profiles.png` |
+| Figure 4 (DAGAF decomposition of one frame) | `eit_dagaf_images` | `figures/fig_dagaf_components.png` |
+| Figure 5 (three weight states) | `eit_dagaf_imf1_weight` | `figures/fig_dagaf_imf1_states.png`; the sweep that fixes the boost at 1.06 |
+| Figure 6 (weight swept 1 → 0) | `eit_partial_weight` | `figures/fig_partial_weight.png` |
+| Figures 7 and 8 (human heart and lung directions) | `eit_fig11_15_repro` | `figures/fig11_repro_abcd.png`, `figures/fig15_repro_abcd.png`; reproduces the 2022 study's Figures 11 and 15 and adds DAGAF |
+| Figure 9 (window sweep) | `make_fig2_fig9` | from companion `results/p2_separating_component_window.mat`; writes `fig9_window_sweep.png` |
+| Table 1 (shape deformation after removing each component) | `eit_compare_table1` | |
+| Table 2 (signed correlations with the lung-only and heart-only signatures) | `eit_revision_r1` (R1a, magnitudes), `eit_table2_sign` (signs) | reads companion `results/p2_env.mat` |
+| Table 3, phantom and control rows | companion `p2_separating_component.m`, `p2_separating_component_ref.m` | |
+| Table 3, human rows | `eit_human_separating_component` | 33 frames of `montreal_data_1995` breath-hold; writes `human_separating_component.mat`, `.txt`, `fig_human_separating_component.png` |
+| Table 3, thorax rows; Table S9; Figure S6 | companion `p2_separating_component_thorax.m`, `_thorax_ref.m` | |
+| Table 4 (displaced heart); Figure S1 | companion `p2_separating_component_offctr.m` | |
+| Table S2 (lung figures of merit, with mesh-density ranges) | `eit_lung_table`, `eit_revision_r4_lung` | the negative-contrast adjustments of Section 2.6 |
+| Table S3 (window cap) | `eit_dagaf_ringing`, `eit_revision_r1` (R2) | |
+| Table S4 (fixed linear high-pass controls) | `eit_revision_r1` (R3) | |
+| Table S5 (collinearity thresholds) | companion | |
+| Table S6 (heart figures of merit, with mesh-density ranges) | `eit_compare_table1`, `eit_revision_r1` (R4) | |
+| Table S7, Figure S2 (four reconstructors) | companion `p2_separating_component_recon.m` | |
+| Table S8 (transfer) | companion | |
+| Figure S4 (cardiac-reference check), Figure S5 (all sixteen window images) | companion `p2_separating_component_ecg.m`, `_window.m` | |
+| Section 3.4, hypothesis 2 (injection axis) | `eit_axis_test`, `dagaf_axis` | |
+| Section 4.2 (window-rule probe) | companion `p2_probeA_blockscaling.m` | |
+| Heart conductivity 1.5 against 2.0 | `eit_sigma_check` | all phantom scripts use σ_heart = 2.0, the value stated in the 2022 study's Methods; this check shows the table published there corresponds to 1.5 |
+| Section 1.3 (literature search) | `docs/literature_search_2026-08-24.md` | the two PubMed queries, the OpenAlex forward-citation screening lists, and a re-run of 31 October 2026 (`docs/literature_search_rerun_2026-10-31.json`) |
+
+`eit_lung_table` also contains the mask diagnosis of Section 2.6, and
+`eit_graphical_abstract` draws a graphical abstract that is not part of the
+manuscript.
 
 ## The contract
 
 Each decomposition returns a `K × 208` matrix whose rows sum exactly to the
 measured vector. Separation is then a weight vector: zero on the *separating*
-row for heart imaging, above one for lung imaging. Because the three methods
-share this interface, the comparison isolates the decomposition and nothing
-else.
+row for the heart direction, above one for the lung direction. Because the
+three methods share this interface, the comparison isolates the decomposition
+and nothing else, and the output of a linear one-step reconstructor splits
+exactly into the unprocessed difference image and the image of the removed
+component (Section 2.7 of the paper; `eit_human_separating_component.m` and
+the companion `p2_separating_component.m`).
 
 The separating row is the one whose removal minimises GREIT shape deformation.
 It is called separating rather than lung-dominant — the term the 2022 study
 used — because Section 3.1 of the paper shows that the removed component is not
 the lung component for any of the three methods.
 
-`dagaf2.m` is a corrected re-implementation of the published DAGAF algorithm.
-Three differences from the reference release are deliberate and are documented
-in the file header: α defaults to 3 as in the paper rather than 4.0728; the
+`dagaf2.m` is a re-implementation of the published DAGAF algorithm from its
+description (Lin, Tan and Tian 2022) and the reference release. Three
+differences from the reference release are deliberate and are documented in the
+file header: α defaults to 3 as in the paper rather than 4.0728; the
 energy-ratio stop criterion follows the published equation; and the boundary
 extension argument is honoured, which it is not in the reference release. A
 `maskCap` argument was added, and it is required here — the published adaptive
@@ -109,8 +160,8 @@ paper explains.
 
 ## Human data
 
-`montreal_data_1995` ships with EIDORS. `eit_fig11_15_repro` loads it directly;
-no download is needed.
+`montreal_data_1995` ships with EIDORS. `eit_fig11_15_repro` and
+`eit_human_separating_component` load it directly; no download is needed.
 
 ## Licence
 
@@ -123,4 +174,9 @@ terms attach to the third-party EMD implementation they obtain.
 
 ## Citation
 
-[TODO — add once the paper has a DOI.]
+Lin Y-D, Ko Y-F (2026). *Measurement-domain component removal in thoracic
+electrical impedance tomography reconstructs the removed component, not the
+heart: a phantom study with a human recording.* Submitted to *Physiological
+Measurement*. Code: https://github.com/yfko/EIT-DAGF. A DOI for the paper will
+be added on publication; a Zenodo archive of this repository will be made at
+acceptance.
