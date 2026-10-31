@@ -62,9 +62,10 @@ box_ = @(x,y,w,h,str,fs) annotation('textbox',[x y w h],'String',str, ...
 arr = @(x1,y1,x2,y2) annotation('arrow',[x1 x2],[y1 y2],'LineWidth',1.4,'Color',[.25 .40 .70]);
 
 % ---- row 1: phantom -> forward problem -> measured frame ----------------
-if exist('fig1a_phantom.png','file')
+pa = fullfile(pwd,'fig1a_phantom.png');   % written by eit_show_phantom (run it first)
+if isfile(pa)
     axes('Position',[0.025 0.585 0.235 0.355]);
-    imshow(imread('fig1a_phantom.png')); axis off
+    imshow(imread(pa)); axis off
 end
 text(0.5,1.06,'3-D FEM phantom','Units','normalized','HorizontalAlignment','center', ...
      'FontSize',11,'FontWeight','bold');

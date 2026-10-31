@@ -101,7 +101,7 @@ means the script lives in `EIT_noise_geometry_pre-registered`.
 
 | Item | Script | Notes |
 |---|---|---|
-| Figure 1 (phantom) | `eit_show_phantom` | panel (a) from `prep_fig1a` → `figures/fig1a_phantom.png` |
+| Figure 1 (phantom) | `eit_show_phantom` | `figures/fig_phantom.png`; panel (a) is drawn from the mesh and also written as `figures/fig1a_phantom.png` (see the note below the table) |
 | Figure 2 (the split, ten rows) | `make_fig2_fig9` | assembles companion `results/p2_separating_component*.mat` and `human_separating_component.mat` from `eit_human_separating_component`; writes `fig2_split_composite.png` and a consistency log |
 | Figure 3 (contract output and centre cuts) | `eit_compare_table1` | `figures/fig_compare_profiles.png` |
 | Figure 4 (DAGAF decomposition of one frame) | `eit_dagaf_images` | `figures/fig_dagaf_components.png` |
@@ -131,6 +131,15 @@ means the script lives in `EIT_noise_geometry_pre-registered`.
 `eit_lung_table` also contains the mask diagnosis of Section 2.6, and
 `eit_graphical_abstract` draws a graphical abstract that is not part of the
 manuscript.
+
+**Figure 1, panel (a).** In the submitted manuscript this panel is a 3-D
+render first published as Fig. (2) of Cheng, Su and Ko 2022 (*Curr Med
+Imaging* 18:1396). Since 31 October 2026 this repository no longer carries that
+image: `eit_show_phantom` draws panel (a) from the phantom mesh it builds, and
+`eit_graphical_abstract` uses the same file. The model is the same (cylinder
+r = 2, h = 2, lungs r = 0.6 at x = ±1, heart r = 0.3, sixteen electrodes); only
+the rendering differs. The other four panels are unchanged in content; MATLAB's
+automatic tick spacing and Netgen's re-meshing can move a few pixel edges.
 
 ## The contract
 

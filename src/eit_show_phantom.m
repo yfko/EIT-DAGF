@@ -21,17 +21,13 @@ img06 = build(0.6, RH, SIG_L, SIG_H, stim);
 % show_fem draws stray slivers outside the axes that survive both clipping
 % and rasterisation, so the 3-D views are drawn directly from the mesh with
 % trisurf instead. All geometry is taken from the model itself.
-% Panel (a) may be supplied as a ready-made render. draw3d() below produces
-% one from the mesh, but the authors' own export is clearer at print size, so
-% it is used when present.
-p3d = fullfile(tmp,'a.png');
-ext = 'fig1a_phantom.png';
-if exist(ext,'file')
-    p3d = ext;
-    fprintf('panel (a): using supplied render %s\n', ext);
-else
-    draw3d(img06, p3d);
-end
+% Panel (a) is drawn from the mesh built above by draw3d() and also written on
+% its own as fig1a_phantom.png (used by eit_graphical_abstract). Until
+% 2026-10-31 this panel imported a render first published as Fig. (2) of
+% Cheng, Su and Ko 2022 (Curr Med Imaging 18:1396); that import and
+% prep_fig1a.m were removed so that the repository holds only its own images.
+p3d = fullfile(pwd,'fig1a_phantom.png');
+draw3d(img06, p3d);
 
 %% --- composite -----------------------------------------------------------
 xax = -2:4/63:2;
@@ -95,30 +91,54 @@ function img = build(rl, RH, SIG_L, SIG_H, stim)
 end
 
 function draw3d(img, outfile)
+% Panel (a): the outer surface mesh as a wireframe, the lung and heart regions
+% as solid surfaces, the electrodes as their own surface patches. Drawn from the
+% model built here; no external render is used.
 f = img.fwd_model;  N = f.nodes;
 sig = img.elem_data;
-isL  = abs(sig-0.5) < 1e-9;                % lungs
-isH  = abs(sig-2.0) < 1e-9;                % heart
-
-h = figure('Color','w','Position',[0 0 760 660],'Visible','off');
-% outer surface, translucent
-% Use the boundary Netgen/EIDORS stored: find_boundary() returns fewer faces
-% (5394 vs 5988) and draws stray edges across the axes.
-trisurf(f.boundary, N(:,1),N(:,2),N(:,3), ...
-        'FaceColor',[0.82 0.84 0.88],'FaceAlpha',0.16, ...
-        'EdgeColor',[0.45 0.45 0.5],'EdgeAlpha',0.20); hold on
-% lungs and heart
-trisurf(find_boundary(f.elems(isL,:)), N(:,1),N(:,2),N(:,3), ...
-        'FaceColor',[0.20 0.32 0.80],'FaceAlpha',0.95,'EdgeColor','none');
-trisurf(find_boundary(f.elems(isH,:)), N(:,1),N(:,2),N(:,3), ...
-        'FaceColor',[0.85 0.18 0.18],'FaceAlpha',0.98,'EdgeColor','none');
-% electrodes
-for k = 1:numel(f.electrode)
-    c = mean(N(f.electrode(k).nodes,:),1);
-    plot3(c(1),c(2),c(3),'o','MarkerSize',8, ...
-          'MarkerFaceColor',[0.10 0.62 0.20],'MarkerEdgeColor','k');
+isL = abs(sig-0.5) < 1e-9;  isH = abs(sig-2.0) < 1e-9;
+h = figure('Color','w','Position',[0 0 900 760],'Visible','off');
+ax = axes(h); hold(ax,'on');
+trisurf(f.boundary, N(:,1),N(:,2),N(:,3), 'Parent',ax, ...
+        'FaceColor','none','EdgeColor',[0.15 0.15 0.15],'EdgeAlpha',0.55,'LineWidth',0.35);
+% inclusion surfaces: boundary faces of each region, kept only if every node lies
+% on that sphere (find_boundary also returns a few faces spanning the region)
+sph = {[ 1 0.1 1 0.6], [-1 0.1 1 0.6], [0 0.1 1 0.3]};
+col = {[0.12 0.40 0.95], [0.12 0.40 0.95], [0.60 0.06 0.06]};
+reg = {isL, isL, isH};
+for s = 1:3
+    F  = find_boundary(f.elems(reg{s},:));
+    c  = sph{s}(1:3);  r = sph{s}(4);
+    d  = sqrt(sum((N - c).^2, 2));
+    F  = F(all(abs(d(F) - r) < 0.12*r + 0.02, 2), :);
+    % faces only, then the facet edges as explicit line segments: the software
+    % renderer used in batch mode draws a few heart edges of a patch as long
+    % stray rays, explicit segments do not
+    patch(ax,'Faces',F,'Vertices',N,'FaceColor',col{s},'EdgeColor','none', ...
+          'FaceLighting','flat','AmbientStrength',0.55);
+    E = unique(sort([F(:,[1 2]); F(:,[2 3]); F(:,[3 1])],2),'rows');
+    X = [N(E(:,1),1) N(E(:,2),1) nan(size(E,1),1)].';
+    Y = [N(E(:,1),2) N(E(:,2),2) nan(size(E,1),1)].';
+    Z = [N(E(:,1),3) N(E(:,2),3) nan(size(E,1),1)].';
+    % lift the edges a hair off the surface toward the sphere's outside so they are not hidden
+    plot3(ax, c(1)+(X-c(1))*1.003, c(2)+(Y-c(2))*1.003, c(3)+(Z-c(3))*1.003, '-', ...
+          'Color',col{s}*0.55,'LineWidth',0.4);
 end
-axis equal off; view(-37,20); camlight headlight; lighting gouraud; material dull
-xlim([-2.1 2.1]); ylim([-2.1 2.1]); zlim([-0.05 2.05]);
-exportgraphics(h,outfile,'Resolution',200,'ContentType','image'); close(h);
+for k = 1:numel(f.electrode)
+    en = f.electrode(k).nodes;
+    bf = f.boundary(all(ismember(f.boundary, en),2),:);
+    if isempty(bf)
+        c = mean(N(en,:),1);
+        plot3(ax,c(1),c(2),c(3),'o','MarkerSize',8,'MarkerFaceColor',[0.05 0.45 0.10],'MarkerEdgeColor','k');
+    else
+        trisurf(bf, N(:,1),N(:,2),N(:,3),'Parent',ax,'FaceColor',[0.05 0.45 0.10],'EdgeColor','none');
+    end
+end
+axis(ax,'equal'); view(ax,-37.5,30);
+xlim(ax,[-2 2]); ylim(ax,[-2 2]); zlim(ax,[0 2]);
+grid(ax,'off'); box(ax,'off');
+set(ax,'FontSize',11,'XTick',-2:0.5:2,'YTick',-2:0.5:2,'ZTick',0:0.5:2);
+camlight(ax,'headlight'); material(ax,'dull');
+exportgraphics(h,outfile,'Resolution',200); close(h);
+fprintf('wrote %s\n', outfile);
 end
